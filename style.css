@@ -1,0 +1,498 @@
+/* Subject Scholars
+/* Aliza Zahler
+     
+/* Desc.   I Used CSS for the animations and design of the todo list project. The 
+          design was outlined on canva.com and used as a reference for the code. 
+          I used a tutorial by Kevin Powell to code this but added a lot of my own 
+                               details and changes. 
+/* Links:
+   Original Design: https://www.canva.com/design/DAE6L-GOPtQ/Ai44-tnAQ4-1oW9uzB-Hbg/edit?utm_content=DAE6L-GOPtQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+   Tutorial: https://www.youtube.com/watch?v=IhmSidOJSeE&t=2459s&ab_channel=KevinPowell
+
+                                  //start code\\     
+/*_________________________________________________________________________________*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body {
+  margin: 0;
+  background-color: rgb(151, 151, 151);
+  background-image: url('Background.png');
+  background-repeat:repeat;
+  background-size: 250px 250px;
+  font-weight: 100;
+  font-size: 1.5rem;
+  font-family: "Work Sans", sans-serif;
+}
+
+/*___p5-canvas_________________________________________________________________*/
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0px;
+  border-top:  7px solid black;
+  border-bottom:  7px solid black;
+  margin: 0;
+  width: 100%;
+  height:200;
+}
+
+/*___clock_____________________________________________________________________*/
+
+.clock-time,
+.clock-ampm {
+   font-family: "Open Sans", sans-serif;
+   font-size: 35px;
+   position:absolute;
+   top: 6em;
+  }
+.clock-ampm{
+  position:relative;
+  top: 224px;
+  left: 2.5em;
+  font-size: 22px;
+  margin-left: 2em;
+  margin-top: 7em;
+}
+
+.clock-time{
+  margin-left: 10px
+}
+
+/*___instructions________________________________________________________________*/
+
+.button {
+  font-family: Open Sans;
+  font-weight: 100;
+  font-size: 19px;
+  color: rgba(0, 0, 0, 0.493);
+  position:absolute;
+  width:115px;
+  margin-top:220px;
+  left: 84%;
+  background:rgba(255, 255, 255, 0.3);
+  background-size:auto;
+  border:  3px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 10px;
+  transition: all 150ms ease-out;
+}
+@media screen and (max-width: 800px) {
+  .button{
+     left:70%;
+  }
+}
+
+.button:hover {
+background: rgb(255,255,255,.4);
+}
+
+.overlay {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(0, 0, 0, 0.7);
+transition: opacity 500ms;
+visibility: hidden;
+opacity: 0;
+}
+.overlay:target {
+visibility: visible;
+opacity: 1;
+}
+
+.popup {
+margin: 70px auto;
+padding: 20px;
+background: #fff;
+border-radius: 5px;
+width: 30%;
+position: relative;
+transition: all 150ms ease-in-out;
+}
+
+.popup span {
+margin-top: 0;
+color: rgb(151, 151, 151);
+font-family: Open Sans;
+font-weight: 200;
+letter-spacing: 2px;
+}
+.popup .close {
+position: absolute;
+top: 20px;
+right: 30px;
+transition: all 200ms;
+font-size: 30px;
+font-weight: bold;
+text-decoration: none;
+color: #333;
+}
+.popup .close:hover {
+color: white;
+}
+.popup .content {
+font-family: Open Sans;
+letter-spacing: 2px;;
+}
+
+@media screen and (max-width: 700px){
+.box{
+  width: 70%;
+}
+.popup{
+  width: 70%;
+}
+}
+
+.credits{
+  font-family: inherit;
+  font-size: 8px;
+  color: black;
+  margin: 0;
+}
+
+/*___todo_list__________________________________________________________________*/
+
+.all-tasks{
+  position: absolute;
+  top: 35px;
+  left: 12%;
+  background: rgba(255, 255, 255, 0.445);
+  border:  5px solid black;
+  border-radius: 50px;
+  color: black;
+  padding-bottom: 20px;
+  padding-right: -2em;
+  margin-right: 1em;
+  margin-top:300px;
+  width:30vw;
+  min-width:50px;
+}
+
+@media screen and (min-width: 1000px) {
+  .all-tasks {
+     width:300px;
+  }
+}
+
+.task-list {
+  font-size: 1.2rem;
+  line-height: 1.7; 
+  list-style: circle;
+  padding-left: 40px;
+}
+
+.task-list-title {
+  font-family: Open Sans;
+  font-weight: 100;
+  position: relative;
+  top: 20px;
+  background: rgba(0, 0, 0, 0.185);
+  padding-left: 30px;
+  display: flex;
+  align-items:center;
+  justify-content:left;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-top:10px;
+}
+
+.list-name:hover {
+  opacity: .5;
+}
+
+form {
+  display:flex;
+}
+
+/*____buttons________________*/
+
+.btn {
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  color: inherit;
+}
+
+#btn-lists{
+  padding-left: 10px;
+  padding-right: 0px;
+}
+
+.btn.create {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-right: 0.25rem;
+  transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover {
+  opacity: 0.2;
+}
+
+.btn.delete {
+  letter-spacing: 1px;
+  opacity: .7;
+}
+
+/*____new_additions___________*/
+
+.new {
+
+  font-weight:0;
+  background: transparent;
+  color: rgb(32, 32, 32);
+  border-bottom: 1px solid currentColor;
+  font-size: inherit;
+  outline: none;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  transition: border-bottom 150ms ease-in;
+  order: 2;
+}
+
+.new:focus {
+  border-bottom-width: 3px;
+}
+
+.new::placeholder{
+  font-family: Open Sans;
+  font-weight: 100;
+}
+
+.new:focus::placeholder {
+  opacity: .4;
+}
+
+/*____content_________________*/
+
+.new.task, 
+.new.list {
+  padding: .25rem;
+}
+
+.new.list {
+  font-size: 1.1rem;
+}
+
+.active-list {
+  font-weight: 700;
+  color:rgb(0,0,0,.8);
+  background: none;
+  border: none;
+  width:100px;
+}
+
+.todo-list{
+  position:absolute;
+  padding-top: 10px;
+  margin-top: -300px;
+  top: 635px;
+  left: 60%;
+  background: rgba(255, 255, 255, 0.445);
+  border:  5px solid black;
+  border-radius: 50px;
+  color: black;
+  padding-bottom: 50px;
+  padding-right: 0px;;
+  height:fit-content;
+  margin-left: -2em;
+  max-width:40%
+}
+
+.todo-header{
+  position: relative;
+  top: 20px;
+  background: rgba(0, 0, 0, 0.185);
+  padding-left: 30px;
+  display: flex;
+  align-items:center;
+  justify-content:left;
+}
+
+.list-title {
+  margin:.8;
+  margin-right:.5em;
+  font-family: Open Sans;
+  font-weight:100;
+  letter-spacing: 1px;
+}
+
+.task-count {
+  margin:2;
+  padding-top:10px;
+  font-size: 1rem;
+  color:rgba(0, 0, 0, 0.3)
+}
+
+.todo-body {
+  position: relative;
+  padding: 2rem;
+  word-spacing: 1px;
+  padding-top: 40px;
+  margin-left: .5em;
+}
+
+[type="checkbox"]{
+  opacity: 0;
+  position: absolute;
+}
+
+.task label {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2.5em
+}
+
+.task {
+  position: relative;
+  margin-bottom: .1em;
+}
+.task::after{
+  content:"";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 1.9em;
+  height: 2px;
+  background: black;
+  opacity: .4;
+}
+
+/*____checkbox________________*/
+
+.custom-checkbox {
+  display: inline-block;
+  width:.75em;
+  height: .75em;
+  margin-right: .75em;
+  cursor: pointer;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  transform: scale(1.2);
+  color:rgba(100, 100, 100, 0.76)
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+  background-color: rgba(100, 100, 100, 0.76);
+  border-color:rgba(100, 100, 100, 0.76);
+  box-shadow: inset 0 0 0px 2px rgb(182, 181, 181);
+}
+
+[type="checkbox"]:checked + label {
+  opacity: .5;
+}
+
+/* animation specifics */
+
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  left: 1.5em;
+  top: calc(50%);
+  height:2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.new.task{
+  position:relative;
+  width: 100%;
+}
+.new.task::placeholder{
+  font-size: 2.4vw;
+  max-width:fit-content
+}
+@media screen and (min-width: 1150px) {
+  .new.task::placeholder {
+     font-size: 28px;
+  }
+}
+
+.new.list{
+  position:relative;
+  width: 100%;
+}
+.new.list::placeholder{
+  font-size: 2vw;
+  max-width:fit-content
+}
+@media screen and (min-width: 1100px) {
+  .new.list::placeholder {
+     font-size: 25px;
+  }
+}
+
+/*____delete________________*/
+
+.delete {
+  position: absolute;
+  transition: opacity 150ms ease-in;
+  transform: scale(1);
+  transition: transform 150ms ease-in-out;
+}
+.task1 {
+  top: 0em;
+  left: 10.5em;
+}
+
+.delete:hover {
+   opacity: .1;
+   transform: scale(1.2);
+   opacity:.4;
+}
+
+.task2 {
+  top: 0em;
+  left: 10.5em;
+}
+
+.task3 {
+  top: 0em;
+  left: 10.5em;
+}
+
+.delete-content{
+  display: flex;
+  position: relative;
+  width: 100%;
+  bottom: -8rem;
+  justify-content: space-evenly;
+  left: -3em;
+  font-size: 20px;
+}
+
+
+#help{
+  position: relative;
+  left: 65%;
+  bottom: -0rem;
+}
+
+/*_________________________________________________________________________________*\
+                                  //end code\\     
+       
