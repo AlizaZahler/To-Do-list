@@ -1,0 +1,127 @@
+<!-- Subject Scholars -->
+<!-- Aliza Zahler  -->
+     
+<!--Desc.   The html is the backbone of any webpage and is completely necessary. 
+        In this case, whats displayed on the page changes from the user's input. I used 
+              Kevin Powell's tutorial for the html with a few obvious changes. 
+  Links:
+   Tutorial: https://www.youtube.com/watch?v=IhmSidOJSeE&t=2459s&ab_channel=KevinPowell
+-->
+
+                                  <!--start code-->    
+<!--_________________________________________________________________________________-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ToDo list</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+
+    <!--link to JavaScript-->
+    <script defer src="main.js"></script>
+    <script defer src="script.js"></script>
+    <script defer src="sketch.js"></script>
+
+  </head>
+
+  <body>
+    <!--link to p5-->
+    <div id="p5-canvas">
+    </div>
+
+     <!--clock-->
+    <div class="clock">
+      <span class="clock-time"></span>
+      <span class="clock-ampm"></span>
+  
+      <a class="button" href="#popup1">Instructions</a>
+    </div>
+    
+    <!--Lists for todo list-->
+    <div class="all-tasks">
+      <h2 class="task-list-title">My lists</h2>
+
+      <ul class="task-list" data-lists>
+      </ul>
+      
+      <form action="" data-new-list-form>
+        <input type="text"
+         class="new list"
+         data-new-list-input
+         placeholder="new list name"
+         aria-label="new list name"
+         />
+        <button class="btn create" aria-label="create new list" id="btn-lists">+</button>
+      </form>
+    </div>
+
+    <!--Tasks for todo list-->
+    <div class="todo-list" data-list-display-container>
+      <div class="todo-header" >
+        <h2 class="list-title" data-list-title></h2>
+        <p class="task-count" data-list-count></p>
+      </div>
+
+      <div class="todo-body">
+        <div class="tasks" data-tasks>
+
+         </div>
+
+        <div class="new-task-creator">
+          <form action="" data-new-task-form>
+            <input type="text"
+             class="new task"
+             data-new-task-input
+             placeholder="new task name"
+             aria-label="new task name"
+             />
+            <button class="btn create" aria-label="create new task">+</button>
+          </form>
+        </div>
+         
+        <div class="delete-content">
+          <button class="btn delete" data-clear-complete-tasks-button>Clear Completed Tasks</button>
+          <button class="btn delete" id="help" data-delete-list-button>Delete List</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <span class="instructions">Instructions:</span>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+          <br>
+          Add lists by typing in the lists menu. Click the plus sign or press enter on a keyboard to add it to the lists.<br>
+          Click a list you created to open the tasks menu.
+          You can add tasks, cross them off, or delete them.
+          <p>
+          Stay Organized!</p>
+          <p class="credits">| Project By: Aliza Zahler | Computer Science Subject Scholars | Shulamith High School | <br> 
+            Programs Used: Visual Studio Code, p5.js Editor, CyberDuck | Total time taken: 23 hours |</p>
+        </div>
+      </div>
+    </div>
+
+    <template id="task-template">
+      <div class="task">
+        <input type="checkbox">
+        <label>
+          <span class="custom-checkbox">
+          </span></label>
+      </div>
+    </template>
+  </body>
+</html>
+
+<!--________________________________________________________________________________-->
+                                 <!--end code-->     
+       
